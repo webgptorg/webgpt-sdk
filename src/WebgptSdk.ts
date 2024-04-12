@@ -1,7 +1,7 @@
 // import type { TaskProgress } from '@promptbook/types'; // <- TODO: !!! Uninstall @promptbook/* if not needed
-import type { MakeAssignmentOptions } from './types/MakeAssignment';
+import type { MakeAssignmentOptions, MakeAssignmentTask } from './types/MakeAssignment';
 import type { MakeWebsiteOptions, MakeWebsiteTask } from './types/MakeWebsite';
-import type { MakeAssignmentTask, TaskId } from './types/Task';
+import type { TaskId } from './types/Task';
 import { notUsing } from './utils/notUsing';
 
 export class WebgptSdk {
