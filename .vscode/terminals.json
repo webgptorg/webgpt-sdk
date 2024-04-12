@@ -2,6 +2,20 @@
     "autokill": true,
     "terminals": [
         {
+            "name": "👨‍💻⚪ Run sample makeAssignment.js",
+            "command": "ts-node ./samples/makeAssignment.ts",
+            "execute": false,
+            "onlySingle": false,
+            "focus": false
+        },
+        {
+            "name": "👨‍💻🟢 Run sample makeWebsite.js",
+            "command": "ts-node ./samples/makeWebsite.ts",
+            "execute": false,
+            "onlySingle": false,
+            "focus": false
+        },
+        {
             "name": "🧪 Lint",
             "command": "npm run lint",
             "execute": false,

@@ -1,22 +1,47 @@
 import { BehaviorSubject } from 'rxjs';
+import spaceTrim from 'spacetrim';
 import type { TaskId } from '../types/_';
-import type { MakeAssignmentOptions, MakeAssignmentTask } from '../types/MakeAssignment';
+import type {
+    MakeAssignmentOptions,
+    MakeAssignmentProgress,
+    MakeAssignmentResult,
+    MakeAssignmentTask,
+} from '../types/MakeAssignment';
 import type { MakeWebsiteOptions, MakeWebsiteTask } from '../types/MakeWebsite';
 import { notUsing } from '../utils/notUsing';
+import { observableToPromise } from '../utils/observableToPromise';
+import { $randomUuid } from '../utils/randomUuid';
 import type { WebgptSdk } from '../WebgptSdk';
 
 export class MockedWebgptSdk implements WebgptSdk {
     public async checkCompatibility(): Promise<void> {}
 
     public makeAssignment(options: MakeAssignmentOptions): MakeAssignmentTask {
-        const { idea } = options;
+        const { id = $randomUuid(), idea } = options;
 
-        // TODO: !!! Better mock
+        const subject = new BehaviorSubject<MakeAssignmentResult | MakeAssignmentProgress>({ assignment: idea });
 
+        (async () => {
+            subject.next({
+                assignment: spaceTrim(
+                    (block) => `
+                        Task is to create a new website:
+                        > ${block(idea)}
+                    `,
+                ),
+            });
+            subject.complete();
+        })();
 
-        const asSubject = () => new BehaviorSubject({ assignment: idea });
-
-        return { assignment: idea };
+        return {
+            id,
+            asObservable() {
+                return subject;
+            },
+            asPromise() {
+                return observableToPromise(subject) as Promise<MakeAssignmentResult>; // <- TODO: Maybe check if it's really result not progress
+            },
+        };
     }
 
     public makeWebsite(options: MakeWebsiteOptions): MakeWebsiteTask {

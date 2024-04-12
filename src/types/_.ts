@@ -1,11 +1,11 @@
-import type { Subject } from 'rxjs';
+import type { BehaviorSubject } from 'rxjs';
 
 export type TaskId = string;
 
 export type Task<TResult, TProgress> = {
     id: TaskId;
     asPromise(): Promise<TResult>;
-    asSubject(): Subject<TResult | TProgress>;
+    asObservable(): BehaviorSubject<TResult | TProgress>;
 };
 
 

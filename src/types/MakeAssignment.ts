@@ -1,28 +1,18 @@
-import type { TaskProgress } from "@promptbook/types";
-import type { Task } from "./_";
+import type { TaskProgress } from '@promptbook/types';
+import type { Task, TaskId } from './_';
 
 export type MakeAssignmentTask = Task<MakeAssignmentResult, MakeAssignmentProgress>;
 
-
-
 export type MakeAssignmentOptions = {
-  idea: string
-}
-
-
+    id?: TaskId;
+    idea: string;
+};
 
 export type MakeAssignmentResult = {
-assignment: string
-}
+    assignment: string;
+};
 
-
-
-
-export type MakeAssignmentProgress = TaskProgress
-
-
-
-
+export type MakeAssignmentProgress = TaskProgress;
 
 /**
  * TODO: !!! Annotate all
