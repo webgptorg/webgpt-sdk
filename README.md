@@ -1,4 +1,4 @@
-# WebGPT SDK
+# ⏣ WebGPT SDK
 
 ## Usage
 
@@ -15,9 +15,9 @@ const webgpt = new WebgptSdk({
     apiKey: 'YOUR_API_KEY',
 });
 
-const assignment = webgpt.createAssignment(`Krokodýlí Zoo`, (taskProgress) => {
+const { assignment } = await webgpt.createAssignment(`Krokodýlí Zoo`, (taskProgress) => {
     console.info(`Progress:`, taskProgress);
 });
 
-// TODO: !!!
+console.info(`Assignment:`, assignment);
 ```
