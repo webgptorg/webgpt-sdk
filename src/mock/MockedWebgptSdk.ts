@@ -51,11 +51,11 @@ export class MockedWebgptSdk implements WebgptSdk {
 
     public recoverAssignmentMaking(id: TaskId): MakeAssignmentTask {
         notUsing(id);
-        return this.makeAssignment({ idea: 'Some previous idea' });
+        return this.makeAssignment({ idea: 'Some previous idea', language: 'en' });
     }
 
     public recoverWebsiteMaking(id: TaskId): MakeWebsiteTask {
         notUsing(id);
-        return this.makeWebsite({ assignment: 'Some previous assignment' });
+        return this.makeWebsite({ assignment: 'Some previous assignment', language: 'en' });
     }
 }
