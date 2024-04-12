@@ -1,10 +1,3 @@
-export class WebgptSdk {
-  constructor() {
-    console.log('WebgptSdk constructor');
-  }
-}
+import { WebgptSdk } from "./WebgptSdk";
 
-
-/**
- * TODO: !!! Split into files
- */
+export { WebgptSdk };
