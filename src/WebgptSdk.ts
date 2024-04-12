@@ -1,20 +1,37 @@
-import type { TaskProgress } from '@promptbook/types';
+// import type { TaskProgress } from '@promptbook/types'; // <- TODO: !!! Uninstall @promptbook/* if not needed
+import type { MakeAssignmentTask, TaskId } from './types/_';
+import type { MakeAssignmentOptions } from './types/MakeAssignment';
+import type { MakeWebsiteOptions, MakeWebsiteTask } from './types/MakeWebsite';
+import { notUsing } from './utils/notUsing';
 
 export class WebgptSdk {
     constructor() {
         console.log('WebgptSdk constructor');
     }
 
-    public async createAssignment(
-        idea: string,
-        onProgress: (taskProgress: TaskProgress) => void,
-    ): Promise<{ assignment: string }> {
-        onProgress;
-        // TODO: !!! Better mock
-        return { assignment: idea };
+    public async checkCompatibility(): Promise<void> {}
+
+    public makeAssignment(options: MakeAssignmentOptions): MakeAssignmentTask {
+        notUsing(options);
+        throw new Error('Not implemented yet');
+    }
+
+    public recoverAssignmentMaking(id: TaskId): MakeAssignmentTask {
+        notUsing(id);
+        throw new Error('Not implemented yet');
+    }
+
+    public makeWebsite(options: MakeWebsiteOptions): MakeWebsiteTask {
+        notUsing(options);
+        throw new Error('Not implemented yet');
+    }
+
+    public recoverWebsiteMaking(id: TaskId): MakeWebsiteTask {
+        notUsing(id);
+        throw new Error('Not implemented yet');
     }
 }
 
 /**
- * TODO: !!! Annotate all
+ * TODO: !!! Annotate all (+with @throws)
  */
