@@ -15,5 +15,6 @@ export type MakeAssignmentResult = {
 export type MakeAssignmentProgress = TaskProgress;
 
 /**
+ * TODO: !!! Make real types for assignment making
  * TODO: !!! Annotate all
  */
