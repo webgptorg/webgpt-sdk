@@ -1,0 +1,66 @@
+name: Publish new version
+on:
+    push:
+        tags:
+            - v*
+jobs:
+    publish-npm:
+        name: Publish on NPM package registry
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+            - name: Setup Node.js
+              uses: actions/setup-node@v1
+              with:
+                  node-version: 18
+                  registry-url: https://registry.npmjs.org/
+            - name: Install dependencies
+              run: npm ci
+            - name: Build packages bundles
+              run: npx ts-node ./scripts/generate-packages/generate-packages.ts
+            - name: Publish @promptbook/cli
+              working-directory: ./packages/cli
+              run: npm publish --access public
+              env:
+                  NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+            - name: Publish @promptbook/core
+              working-directory: ./packages/core
+              run: npm publish --access public
+              env:
+                  NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+            - name: Publish @promptbook/execute-javascript
+              working-directory: ./packages/execute-javascript
+              run: npm publish --access public
+              env:
+                  NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+            - name: Publish @promptbook/openai
+              working-directory: ./packages/openai
+              run: npm publish --access public
+              env:
+                  NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+            - name: Publish @promptbook/remote-client
+              working-directory: ./packages/remote-client
+              run: npm publish --access public
+              env:
+                  NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+            - name: Publish @promptbook/remote-server
+              working-directory: ./packages/remote-server
+              run: npm publish --access public
+              env:
+                  NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+            - name: Publish @promptbook/types
+              working-directory: ./packages/types
+              run: npm publish --access public
+              env:
+                  NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+            - name: Publish @promptbook/utils
+              working-directory: ./packages/utils
+              run: npm publish --access public
+              env:
+                  NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+            - name: Publish @promptbook/wizzard
+              working-directory: ./packages/wizzard
+              run: npm publish --access public
+              env:
+                  NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

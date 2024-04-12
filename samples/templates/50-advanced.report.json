@@ -1,0 +1,193 @@
+{
+    "promptbookUrl": "https://promptbook.example.com/samples/language-capabilities.ptbk.md@v1",
+    "title": "✨ Sample: Language Capabilities",
+    "promptbookUsedVersion": "0.40.0-10",
+    "promptbookRequestedVersion": "1.0.0",
+    "description": "Trying the language capabilities of GPT models.",
+    "promptExecutions": [
+        {
+            "prompt": {
+                "title": "💬 Synonym",
+                "content": "Write synonym for \"cat\"",
+                "modelRequirements": {
+                    "modelVariant": "CHAT",
+                    "modelName": "gpt-3.5-turbo"
+                }
+            },
+            "result": {
+                "content": "feline",
+                "model": "gpt-3.5-turbo",
+                "timing": {
+                    "start": "2024-03-24T09:30:38.325Z",
+                    "complete": "2024-03-24T09:30:39.087Z"
+                },
+                "usage": {
+                    "price": "UNKNOWN",
+                    "inputTokens": 13,
+                    "outputTokens": 2
+                },
+                "rawResponse": {
+                    "id": "chatcmpl-96ETYXfpt5c1Smq0pa578YAFbwhjv",
+                    "object": "chat.completion",
+                    "created": 1711272640,
+                    "model": "gpt-3.5-turbo-0125",
+                    "choices": [
+                        {
+                            "index": 0,
+                            "message": {
+                                "role": "assistant",
+                                "content": "feline"
+                            },
+                            "logprobs": null,
+                            "finish_reason": "stop"
+                        }
+                    ],
+                    "usage": {
+                        "prompt_tokens": 13,
+                        "completion_tokens": 2,
+                        "total_tokens": 15
+                    },
+                    "system_fingerprint": "fp_3bc1b5746c"
+                }
+            }
+        },
+        {
+            "prompt": {
+                "title": "💬 Sentence with Synonym",
+                "content": "Write sentence with \"cat\" and \"feline\" in it",
+                "modelRequirements": {
+                    "modelVariant": "CHAT",
+                    "modelName": "gpt-3.5-turbo"
+                }
+            },
+            "result": {
+                "content": "My cat is a sleek and agile feline, always ready to pounce on any toy that moves.",
+                "model": "gpt-3.5-turbo",
+                "timing": {
+                    "start": "2024-03-24T09:30:39.096Z",
+                    "complete": "2024-03-24T09:30:40.198Z"
+                },
+                "usage": {
+                    "price": "UNKNOWN",
+                    "inputTokens": 20,
+                    "outputTokens": 21
+                },
+                "rawResponse": {
+                    "id": "chatcmpl-96ETZfX5ViUqSQYhl2DNzzMr7d8XL",
+                    "object": "chat.completion",
+                    "created": 1711272641,
+                    "model": "gpt-3.5-turbo-0125",
+                    "choices": [
+                        {
+                            "index": 0,
+                            "message": {
+                                "role": "assistant",
+                                "content": "My cat is a sleek and agile feline, always ready to pounce on any toy that moves."
+                            },
+                            "logprobs": null,
+                            "finish_reason": "stop"
+                        }
+                    ],
+                    "usage": {
+                        "prompt_tokens": 20,
+                        "completion_tokens": 21,
+                        "total_tokens": 41
+                    },
+                    "system_fingerprint": "fp_3bc1b5746c"
+                }
+            }
+        },
+        {
+            "prompt": {
+                "title": "💬 Sentence without original word",
+                "content": "Remove word \"cat\" from sentence and modify it so that it makes sense:\n\n## Rules:\n\n-   Sentence must be grammatically correct\n-   Sentence must make sense after removing the word\n\n## The Sentence:\n\n> My cat is a sleek and agile feline, always ready to pounce on any toy that moves.",
+                "modelRequirements": {
+                    "modelVariant": "CHAT",
+                    "modelName": "gpt-3.5-turbo"
+                }
+            },
+            "result": {
+                "content": "My sleek and agile feline is always ready to pounce on any toy that moves.",
+                "model": "gpt-3.5-turbo",
+                "timing": {
+                    "start": "2024-03-24T09:30:40.199Z",
+                    "complete": "2024-03-24T09:30:40.843Z"
+                },
+                "usage": {
+                    "price": "UNKNOWN",
+                    "inputTokens": 72,
+                    "outputTokens": 18
+                },
+                "rawResponse": {
+                    "id": "chatcmpl-96ETaklThe229g0jGroazVYdKybLC",
+                    "object": "chat.completion",
+                    "created": 1711272642,
+                    "model": "gpt-3.5-turbo-0125",
+                    "choices": [
+                        {
+                            "index": 0,
+                            "message": {
+                                "role": "assistant",
+                                "content": "My sleek and agile feline is always ready to pounce on any toy that moves."
+                            },
+                            "logprobs": null,
+                            "finish_reason": "stop"
+                        }
+                    ],
+                    "usage": {
+                        "prompt_tokens": 72,
+                        "completion_tokens": 18,
+                        "total_tokens": 90
+                    },
+                    "system_fingerprint": "fp_3bc1b5746c"
+                }
+            }
+        },
+        {
+            "prompt": {
+                "title": "💬 Comparison",
+                "content": "Compare meaning of thee two sentences:\n\n## Sentence 1:\n\n> My cat is a sleek and agile feline, always ready to pounce on any toy that moves.\n\n## Sentence 2:\n\n> My sleek and agile feline is always ready to pounce on any toy that moves.",
+                "modelRequirements": {
+                    "modelVariant": "CHAT",
+                    "modelName": "gpt-4"
+                }
+            },
+            "result": {
+                "content": "Both sentences convey the same meaning. They both talk about a cat belonging to the speaker, described as sleek and agile, who pounces on toys that move.\n\nThe only difference lies in the delivery of the message. The first sentence identifies the cat ('my cat') before describing it ('is a sleek and agile feline'), while the second sentence directly uses the description of the cat ('my sleek and agile feline') as the subject of the sentence.",
+                "model": "gpt-4",
+                "timing": {
+                    "start": "2024-03-24T09:30:40.845Z",
+                    "complete": "2024-03-24T09:30:43.383Z"
+                },
+                "usage": {
+                    "price": 0.0033799999999999998,
+                    "inputTokens": 65,
+                    "outputTokens": 91
+                },
+                "rawResponse": {
+                    "id": "chatcmpl-96ETbGvtPriU6qLEf65huDK7vQcl1",
+                    "object": "chat.completion",
+                    "created": 1711272643,
+                    "model": "gpt-4-0613",
+                    "choices": [
+                        {
+                            "index": 0,
+                            "message": {
+                                "role": "assistant",
+                                "content": "Both sentences convey the same meaning. They both talk about a cat belonging to the speaker, described as sleek and agile, who pounces on toys that move.\n\nThe only difference lies in the delivery of the message. The first sentence identifies the cat ('my cat') before describing it ('is a sleek and agile feline'), while the second sentence directly uses the description of the cat ('my sleek and agile feline') as the subject of the sentence."
+                            },
+                            "logprobs": null,
+                            "finish_reason": "stop"
+                        }
+                    ],
+                    "usage": {
+                        "prompt_tokens": 65,
+                        "completion_tokens": 91,
+                        "total_tokens": 156
+                    },
+                    "system_fingerprint": null
+                }
+            }
+        }
+    ]
+}
