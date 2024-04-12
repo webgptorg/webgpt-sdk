@@ -60,5 +60,5 @@
     },
     "main": "./dist/umd/index.umd.js",
     "module": "./dist/esm/index.es.js",
-    "typings": "./dist/esm/typings/!!!!"
+    "typings": "./dist/esm/typings/index.d.ts"
 }

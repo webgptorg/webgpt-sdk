@@ -23,6 +23,13 @@
             "focus": false
         },
         {
+            "name": "🧪🏭 Test build",
+            "command": "npm run build",
+            "execute": false,
+            "onlySingle": false,
+            "focus": false
+        },
+        {
             "name": "🔼👑 Release major version",
             "command": "npm version major",
             "onlySingle": true,
