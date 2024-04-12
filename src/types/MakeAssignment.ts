@@ -1,10 +1,12 @@
 import type { TaskProgress } from '@promptbook/types';
+import type { Language } from './Language';
 import type { Task, TaskId } from './Task';
 
 export type MakeAssignmentTask = Task<MakeAssignmentResult, MakeAssignmentProgress>;
 
 export type MakeAssignmentOptions = {
     id?: TaskId;
+    language: Language;
     idea: string;
 };
 
