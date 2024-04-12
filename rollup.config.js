@@ -7,20 +7,20 @@ export const packageNames = readdirSync(join(__dirname, 'src/_packages'), { recu
     .filter((dirent) => dirent.name.endsWith('.index.ts'))
     .map((dirent) => dirent.name.split('.').shift());
 
-export default packageNames.map((name) => ({
-    input: `./src/_packages/${name}.index.ts`,
-    output: [
-        {
-            file: `./packages/${name}/umd/index.umd.js`,
-            name: `promptbook-${name}`,
-            format: 'umd',
-            sourcemap: true,
-        },
-        {
-            file: `./packages/${name}/esm/index.es.js`,
-            format: 'es',
-            sourcemap: true,
-        },
-    ],
-    plugins: [typescript({ tsconfig: './tsconfig.json' })],
-}));
+export default [{
+  input: `./src/index.ts`,
+  output: [
+      {
+          file: `./dist/umd/index.umd.js`,
+          name: `webgpt-sdk`,
+          format: 'umd',
+          sourcemap: true,
+      },
+      {
+          file: `./dist/esm/index.es.js`,
+          format: 'es',
+          sourcemap: true,
+      },
+  ],
+  plugins: [typescript({ tsconfig: './tsconfig.json' })],
+}]

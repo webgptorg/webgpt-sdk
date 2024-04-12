@@ -2,51 +2,8 @@
     "autokill": true,
     "terminals": [
         {
-            "name": "👨‍💻⚪ Run simple-script sample",
-            "command": "node ./samples/usage/simple-script/simple-script.js",
-            "execute": false,
-            "onlySingle": false,
-            "focus": false
-        },
-        {
-            "name": "👨‍💻🔴 Run logging sample",
-            "command": "ts-node ./samples/usage/logging/logging.ts",
-            "execute": false,
-            "onlySingle": false,
-            "focus": false
-        },
-        {
-            "name": "👨‍💻🔵 Run remote sample",
-            "command": "ts-node ./samples/usage/remote/server.ts",
-            "execute": false,
-            "onlySingle": false,
-            "focus": false
-        },
-        {
-            "name": "👨‍💻🔽 Install promptbook for usage samples",
-            "cwd": "./samples/usage/",
-            "command": "npm i",
-            "execute": false,
-            "onlySingle": false,
-            "focus": false
-        },
-        {
             "name": "🧪 Lint",
             "command": "npm run lint",
-            "execute": false,
-            "onlySingle": false,
-            "focus": false
-        },
-        {
-            "name": "🧪 Lint (samples)",
-            "command": "eslint samples",
-            "execute": false,
-            "onlySingle": false,
-            "focus": false
-        },
-        {
-            "name": "🧪 Lint (scripts)",
-            "command": "eslint scripts",
             "execute": false,
             "onlySingle": false,
             "focus": false
@@ -63,42 +20,6 @@
             "command": "npm run test-types",
             "execute": false,
             "onlySingle": false,
-            "focus": false
-        },
-        {
-            "name": "🤪 Find fresh emoji tag",
-            "command": "ts-node ./scripts/find-fresh-emoji-tag/find-fresh-emoji-tag.ts",
-            "execute": true,
-            "focus": true
-        },
-        {
-            "name": "🏭📦 Generate packages",
-            "commands": ["ts-node ./scripts/generate-packages/generate-packages.ts"],
-            "execute": false,
-            "onlySingle": true,
-            "focus": false
-        },
-        {
-            "name": "🏭📖 Generate samples .ptbk.md -> .ptbk.json",
-            "commands": ["ts-node ./scripts/generate-sample-jsons/generate-sample-jsons.ts"],
-            "execute": false,
-            "onlySingle": false,
-            "focus": false
-        },
-        {
-            "name": "🏭📖 Prettify samples and add mermaid graphs -> .ptbk.md",
-            "commands": [
-                "ts-node ./scripts/promptbook-cli/promptbook-cli.ts prettify samples/templates/**/*.ptbk.md --ignore \"samples/templates/errors/**/*.ptbk.md\""
-            ],
-            "execute": false,
-            "onlySingle": false,
-            "focus": false
-        },
-        {
-            "name": "🏭📖 Generate reports .report.json -> .report.md",
-            "commands": ["ts-node ./scripts/generate-sample-reports/generate-sample-reports.ts"],
-            "execute": false,
-            "onlySingle": true,
             "focus": false
         },
         {
