@@ -1,5 +1,7 @@
 # ⏣ WebGPT SDK
 
+WebGPT SDK is a TypeScript / JavaScript library for interacting with the [WebGPT](https://webgpt.cz/) API.
+
 ## Usage
 
 ```bash
