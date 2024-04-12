@@ -39,7 +39,7 @@
         "lint": "eslint src",
         "build": "npx rollup --config rollup.config.js",
         "preversion": "git pull && npm run lint && npm test && tsc",
-        "postversion": "npm run generate-packages && git push && git push --tags"
+        "postversion": "npm run build && git push && git push --tags"
     },
     "devDependencies": {
         "@rollup/plugin-typescript": "8.3.0",
