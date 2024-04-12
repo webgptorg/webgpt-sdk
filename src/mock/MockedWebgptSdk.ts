@@ -1,6 +1,5 @@
 import { BehaviorSubject } from 'rxjs';
 import spaceTrim from 'spacetrim';
-import type { TaskId } from '../types/_';
 import type {
     MakeAssignmentOptions,
     MakeAssignmentProgress,
@@ -8,6 +7,7 @@ import type {
     MakeAssignmentTask,
 } from '../types/MakeAssignment';
 import type { MakeWebsiteOptions, MakeWebsiteTask } from '../types/MakeWebsite';
+import type { TaskId } from '../types/Task';
 import { notUsing } from '../utils/notUsing';
 import { observableToPromise } from '../utils/observableToPromise';
 import { $randomUuid } from '../utils/randomUuid';

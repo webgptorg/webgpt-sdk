@@ -1,5 +1,5 @@
 import type { TaskProgress } from '@promptbook/types';
-import type { Task, TaskId } from './_';
+import type { Task, TaskId } from './Task';
 
 export type MakeAssignmentTask = Task<MakeAssignmentResult, MakeAssignmentProgress>;
 

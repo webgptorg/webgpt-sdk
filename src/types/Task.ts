@@ -16,5 +16,4 @@ export type Task<TResult, TProgress> = {
 
 /**
  * TODO: !!! Annotate all
- * TODO: !!! Split into files
  */
