@@ -19,19 +19,11 @@ async function makeAssignment() {
 
     const task = webgpt.makeAssignment({ idea: `Krokodýlí Zoo`, language: `cs` });
 
-    task.asObservable().subscribe({
-        next(progress) {
-            console.info(colors.bgBlue(`Progress:`), progress);
-        },
-        error(error) {
-            console.error(colors.bgRed(`Error:`), error);
-        },
-        complete() {
-            console.info(colors.bgGreen(`Completed`));
-        },
+    task.asObservable().subscribe((progress) => {
+        console.info(colors.bgBlue(progress.status), progress.message);
     });
 
     const { assignment } = await task.asPromise();
 
-    console.info(colors.bgGreen(`Assignment:`), assignment);
+    console.info(colors.bgGreen(`Assignment:`), '\n', assignment);
 }
