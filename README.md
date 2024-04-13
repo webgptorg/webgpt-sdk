@@ -21,12 +21,12 @@ const webgpt = new WebgptSdk({
     apiKey: 'YOUR_API_KEY',
 });
 
-const task = webgpt.makeAssignment({
-    idea: `Crocodile zoo`
-    language: `en`,
-});
-
-const { assignment } = await task.asPromise();
+const { assignment } = webgpt
+    .makeAssignment({
+        idea: `Crocodile zoo`,
+        language: `en`,
+    })
+    .asPromise();
 
 console.info(`Assignment:`, '\n', assignment);
 ```
