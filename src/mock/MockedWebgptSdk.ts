@@ -1,5 +1,7 @@
 import { BehaviorSubject } from 'rxjs';
 import spaceTrim from 'spacetrim';
+import { forTime } from 'waitasecond';
+import { IdeaNotAccepted } from '../errors/IdeaNotAccepted';
 import type {
     MakeAssignmentOptions,
     MakeAssignmentProgress,
@@ -19,10 +21,21 @@ export class MockedWebgptSdk implements WebgptSdk {
     public makeAssignment(options: MakeAssignmentOptions): MakeAssignmentTask {
         const { id = $randomUuid(), idea } = options;
 
-        const subject = new BehaviorSubject<MakeAssignmentResult | MakeAssignmentProgress>({ assignment: idea });
+        if (idea.length < 10) {
+            throw new IdeaNotAccepted('Idea is too short');
+        }
+
+        const subject = new BehaviorSubject<MakeAssignmentResult | MakeAssignmentProgress>({
+            status: 'RUNNING',
+            message: 'Creating assignment...',
+        });
 
         (async () => {
+            await forTime(3000);
+
             subject.next({
+                status: 'SUCCESS',
+                message: 'Assignment created',
                 assignment: spaceTrim(
                     (block) => `
                         Task is to create a new website:
@@ -30,6 +43,7 @@ export class MockedWebgptSdk implements WebgptSdk {
                     `,
                 ),
             });
+
             subject.complete();
         })();
 

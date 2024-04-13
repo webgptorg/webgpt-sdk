@@ -1,4 +1,3 @@
-import type { TaskProgress } from '@promptbook/types';
 import type { Language } from './Language';
 import type { Task, TaskId } from './Task';
 
@@ -11,10 +10,15 @@ export type MakeAssignmentOptions = {
 };
 
 export type MakeAssignmentResult = {
+    status: 'SUCCESS';
+    message: string;
     assignment: string;
 };
 
-export type MakeAssignmentProgress = TaskProgress;
+export type MakeAssignmentProgress = {
+    status: 'RUNNING';
+    message: string;
+};
 
 /**
  * TODO: !!! Make real types for assignment making

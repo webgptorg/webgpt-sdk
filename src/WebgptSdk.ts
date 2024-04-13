@@ -11,11 +11,19 @@ export class WebgptSdk {
 
     public async checkCompatibility(): Promise<void> {}
 
+    /**
+     * Creates a new assignment based on the idea.
+     *
+     * @throws {IdeaNotAccepted} If the idea is not good enough
+     */
     public makeAssignment(options: MakeAssignmentOptions): MakeAssignmentTask {
         notUsing(options);
         throw new Error('Not implemented yet');
     }
 
+    /**
+     * Connects to the existing task based on id
+     */
     public recoverAssignmentMaking(id: TaskId): MakeAssignmentTask {
         notUsing(id);
         throw new Error('Not implemented yet');

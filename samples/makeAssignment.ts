@@ -17,7 +17,7 @@ async function makeAssignment() {
 
     const webgpt = new MockedWebgptSdk();
 
-    const task = webgpt.makeAssignment({ idea: `Krokodýlí Zoo` });
+    const task = webgpt.makeAssignment({ idea: `Krokodýlí Zoo`, language: `cs` });
 
     task.asObservable().subscribe({
         next(progress) {
