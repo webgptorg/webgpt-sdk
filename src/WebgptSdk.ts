@@ -3,7 +3,7 @@ import { countCharacters, countWords } from '@promptbook/utils';
 import { BehaviorSubject } from 'rxjs';
 import type { Socket } from 'socket.io-client';
 import { io } from 'socket.io-client';
-import { version } from '../package.json';
+// !!!! import { version } from '../package.json';
 import { IdeaNotAccepted } from './errors/IdeaNotAccepted';
 import { UnexpectedError } from './errors/UnexpectedError';
 import type {
@@ -72,7 +72,7 @@ export class WebgptSdk {
             const socket = await this.makeConnection();
             socket.emit('request', {
                 token: this.options.token,
-                sdkVersion: version,
+                sdkVersion: /*version*/ '!!!!',
                 id,
                 type: 'REQUEST',
                 taskName: 'MAKE_ASSIGNMENT',

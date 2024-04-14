@@ -2,6 +2,7 @@ import typescript from '@rollup/plugin-typescript';
 
 export default {
     input: `./src/index.ts`,
+
     output: [
         {
             file: `./dist/umd/index.umd.js`,
@@ -15,5 +16,6 @@ export default {
             sourcemap: true,
         },
     ],
-    plugins: [typescript({ tsconfig: './tsconfig.json' })],
+
+    plugins: [typescript()],
 };
