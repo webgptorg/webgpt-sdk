@@ -25,8 +25,6 @@ export class WebgptSdk {
         console.log('WebgptSdk constructor');
     }
 
-    public async checkCompatibility(): Promise<void> {}
-
     /**
      * Creates a connection to the remote proxy server.
      */

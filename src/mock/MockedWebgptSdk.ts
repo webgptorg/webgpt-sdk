@@ -16,8 +16,6 @@ import { $randomUuid } from '../utils/randomUuid';
 import type { WebgptSdk } from '../WebgptSdk';
 
 export class MockedWebgptSdk implements WebgptSdk {
-    public async checkCompatibility(): Promise<void> {}
-
     public makeAssignment(options: MakeAssignmentOptions): MakeAssignmentTask {
         const { id = $randomUuid(), idea } = options;
 
