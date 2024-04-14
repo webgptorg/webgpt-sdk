@@ -9,11 +9,13 @@ import type { SdkSocket_Abstract } from './SdkSocket_Abstract';
  */
 export type SdkSocket_Progress = SdkSocket_Abstract & {
     readonly type: 'PROGRESS';
+
+    readonly message: string;
 } & (
         | ({
-          readonly taskName: 'MAKE_ASSIGNMENT';
+              readonly taskName: 'MAKE_ASSIGNMENT';
           } & MakeAssignmentProgress)
         | ({
-          readonly taskName: 'MAKE_WEBSITE';
+              readonly taskName: 'MAKE_WEBSITE';
           } & MakeWebsiteProgress)
     );

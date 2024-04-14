@@ -11,7 +11,7 @@ export type SdkSocket_Request = SdkSocket_Abstract & {
     readonly token: string;
 
     readonly sdkVersion: string;
-} & {
+
     readonly type: 'REQUEST';
 } & (
         | ({

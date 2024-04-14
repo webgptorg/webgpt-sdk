@@ -14,6 +14,4 @@ export type SdkSocket_Abstract = {
     readonly taskName: 'MAKE_ASSIGNMENT' | 'MAKE_WEBSITE';
 
     readonly type: 'REQUEST' | 'PROGRESS' | 'RESPONSE' | 'ERROR';
-
-    readonly message: string;
 };

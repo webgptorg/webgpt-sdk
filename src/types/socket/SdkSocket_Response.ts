@@ -9,6 +9,8 @@ import type { SdkSocket_Abstract } from './SdkSocket_Abstract';
  */
 export type SdkSocket_Response = SdkSocket_Abstract & {
     readonly type: 'RESPONSE';
+
+    readonly message: string;
 } & (
         | ({
               readonly taskName: 'MAKE_ASSIGNMENT';

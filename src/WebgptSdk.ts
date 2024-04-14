@@ -94,6 +94,7 @@ export class WebgptSdk {
 
                 subject.next({
                     status: 'SUCCESS',
+                    message: response.message,
                     assignment: response.assignment,
                 });
 
