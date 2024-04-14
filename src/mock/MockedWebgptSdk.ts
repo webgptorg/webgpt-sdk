@@ -15,7 +15,9 @@ import { observableToPromise } from '../utils/observableToPromise';
 import { $randomUuid } from '../utils/randomUuid';
 import type { WebgptSdk } from '../WebgptSdk';
 
-export class MockedWebgptSdk implements WebgptSdk {
+export class MockedWebgptSdk
+    implements Pick<WebgptSdk, 'makeAssignment' | 'recoverAssignmentMaking' | 'makeWebsite' | 'recoverWebsiteMaking'>
+{
     public makeAssignment(options: MakeAssignmentOptions): MakeAssignmentTask {
         const { id = $randomUuid(), idea } = options;
 
@@ -29,7 +31,7 @@ export class MockedWebgptSdk implements WebgptSdk {
         });
 
         (async () => {
-            await forTime(3000);
+            await forTime(3000 /* <- Note: Waiting some dummy time */);
 
             subject.next({
                 status: 'SUCCESS',

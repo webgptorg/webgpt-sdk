@@ -1,4 +1,5 @@
 import type { MakeAssignmentResult } from '../MakeAssignment';
+import type { MakeWebsiteResult } from '../MakeWebsite';
 import type { SdkSocket_Abstract } from './SdkSocket_Abstract';
 
 /**
@@ -9,12 +10,10 @@ import type { SdkSocket_Abstract } from './SdkSocket_Abstract';
 export type SdkSocket_Response = SdkSocket_Abstract & {
     readonly type: 'RESPONSE';
 } & (
-        | {
-              taskName: 'MAKE_ASSIGNMENT';
-              result: MakeAssignmentResult;
-          }
-        | {
-              taskName: 'MAKE_WEBSITE';
-              result: MakeAssignmentResult;
-          }
+        | ({
+              readonly taskName: 'MAKE_ASSIGNMENT';
+          } & MakeAssignmentResult)
+        | ({
+              readonly taskName: 'MAKE_WEBSITE';
+          } & MakeWebsiteResult)
     );

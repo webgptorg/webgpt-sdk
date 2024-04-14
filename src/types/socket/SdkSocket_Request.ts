@@ -8,14 +8,16 @@ import type { SdkSocket_Abstract } from './SdkSocket_Abstract';
  * This is a request from client to server
  */
 export type SdkSocket_Request = SdkSocket_Abstract & {
+    readonly token: string;
+
+    readonly sdkVersion: string;
+} & {
     readonly type: 'REQUEST';
 } & (
-        | {
-              taskName: 'MAKE_ASSIGNMENT';
-              options: MakeAssignmentOptions;
-          }
-        | {
-              taskName: 'MAKE_WEBSITE';
-              options: MakeWebsiteOptions;
-          }
+        | ({
+              readonly taskName: 'MAKE_ASSIGNMENT';
+          } & MakeAssignmentOptions)
+        | ({
+              readonly taskName: 'MAKE_WEBSITE';
+          } & MakeWebsiteOptions)
     );

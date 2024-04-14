@@ -3,7 +3,12 @@ import { WebgptSdk } from './WebgptSdk';
 
 describe('how WebgptSdk works', () => {
     it('is constructable', () => {
-        expect(() => new WebgptSdk()).not.toThrow();
+        expect(
+            () =>
+                new WebgptSdk({
+                    token: 'NOT_USED',
+                }),
+        ).not.toThrow();
     });
 });
 

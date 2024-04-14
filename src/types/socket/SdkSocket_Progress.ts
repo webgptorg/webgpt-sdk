@@ -8,16 +8,12 @@ import type { SdkSocket_Abstract } from './SdkSocket_Abstract';
  * This is sent from server to client arbitrarily and may be sent multiple times
  */
 export type SdkSocket_Progress = SdkSocket_Abstract & {
-
-  readonly type:  'PROGRESS';
-} &
-    (
-        | {
-          taskName: 'MAKE_ASSIGNMENT';
-              progress: MakeAssignmentProgress;
-          }
-        | {
-          taskName: 'MAKE_WEBSITE';
-              progress: MakeWebsiteProgress;
-          }
+    readonly type: 'PROGRESS';
+} & (
+        | ({
+          readonly taskName: 'MAKE_ASSIGNMENT';
+          } & MakeAssignmentProgress)
+        | ({
+          readonly taskName: 'MAKE_WEBSITE';
+          } & MakeWebsiteProgress)
     );

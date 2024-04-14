@@ -1,6 +1,5 @@
-import type { TaskProgress } from '@promptbook/types';
+import type { Language } from './Language';
 import type { Task, TaskId } from './Task';
-import type  { Language } from './Language';
 
 export type MakeWebsiteTask = Task<MakeWebsiteOptions, MakeWebsiteProgress>;
 
@@ -11,10 +10,15 @@ export type MakeWebsiteOptions = {
 };
 
 export type MakeWebsiteResult = {
+    status: 'SUCCESS';
     url: string;
+    message: string;
 };
 
-export type MakeWebsiteProgress = TaskProgress;
+export type MakeWebsiteProgress = {
+    status: 'RUNNING';
+    message: string;
+};
 
 /**
  * TODO: !!! Make real types for website making

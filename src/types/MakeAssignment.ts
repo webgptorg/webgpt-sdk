@@ -11,8 +11,8 @@ export type MakeAssignmentOptions = {
 
 export type MakeAssignmentResult = {
     status: 'SUCCESS';
-    message: string;
     assignment: string;
+    message: string;
 };
 
 export type MakeAssignmentProgress = {

@@ -8,8 +8,7 @@ import type { SdkSocket_Abstract } from './SdkSocket_Abstract';
 export type SdkSocket_Error = SdkSocket_Abstract & {
     readonly type: 'ERROR';
 
-    error: {
-        name: string;
-        message: string;
-    };
+    readonly errorName: string;
+
+    readonly message: string;
 };

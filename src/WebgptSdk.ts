@@ -3,7 +3,9 @@ import { countCharacters, countWords } from '@promptbook/utils';
 import { BehaviorSubject } from 'rxjs';
 import type { Socket } from 'socket.io-client';
 import { io } from 'socket.io-client';
+import { version } from '../package.json';
 import { IdeaNotAccepted } from './errors/IdeaNotAccepted';
+import { UnexpectedError } from './errors/UnexpectedError';
 import type {
     MakeAssignmentOptions,
     MakeAssignmentProgress,
@@ -11,6 +13,10 @@ import type {
     MakeAssignmentTask,
 } from './types/MakeAssignment';
 import type { MakeWebsiteOptions, MakeWebsiteTask } from './types/MakeWebsite';
+import type { SdkSocket_Error } from './types/socket/SdkSocket_Error';
+import type { SdkSocket_Progress } from './types/socket/SdkSocket_Progress';
+import type { SdkSocket_Request } from './types/socket/SdkSocket_Request';
+import type { SdkSocket_Response } from './types/socket/SdkSocket_Response';
 import type { TaskId } from './types/Task';
 import { notUsing } from './utils/notUsing';
 import { observableToPromise } from './utils/observableToPromise';
@@ -51,7 +57,7 @@ export class WebgptSdk {
      * @throws {IdeaNotAccepted} If the idea is not good enough
      */
     public makeAssignment(options: MakeAssignmentOptions): MakeAssignmentTask {
-        const { id = $randomUuid(), idea } = options;
+        const { id = $randomUuid(), idea, language } = options;
 
         if (countCharacters(idea) < 10 || countWords(idea) < 2) {
             throw new IdeaNotAccepted('Idea is too short');
@@ -64,24 +70,62 @@ export class WebgptSdk {
 
         (async () => {
             const socket = await this.makeConnection();
-            socket.emit('request', { token: this.options.token, id, idea } satisfies SdkSocket_Request);
+            socket.emit('request', {
+                token: this.options.token,
+                sdkVersion: version,
+                id,
+                type: 'REQUEST',
+                taskName: 'MAKE_ASSIGNMENT',
+                idea,
+                language,
+            } satisfies SdkSocket_Request);
 
-            const promptResult = await new Promise<Array<ImagePromptResult>>((resolve, reject) => {
-                socket.on('response', (response: SdkSocket_Response) => {
-                    resolve(response.promptResult);
-                    socket.disconnect();
-                });
-                socket.on('error', (error: SdkSocket_Error) => {
-                    //            <- TODO: Custom type of error
-                    reject(new Error(error.errorMessage));
-                    socket.disconnect();
+            socket.on('response', (response: SdkSocket_Response) => {
+                if (id !== response.id) {
+                    return;
+                }
+
+                // TODO: [💢] Maybe no need to check this
+                if (response.taskName !== 'MAKE_ASSIGNMENT') {
+                    return subject.error(
+                        new UnexpectedError(`Expected taskName to be 'MAKE_ASSIGNMENT' but got ${response.taskName}`),
+                    );
+                }
+
+                subject.next({
+                    status: 'SUCCESS',
+                    assignment: response.assignment,
                 });
 
-                // TODO: !! Use onProgress
+                subject.complete();
+                socket.disconnect();
             });
 
-            socket.disconnect();
-            subject.complete();
+            socket.on('progress', (response: SdkSocket_Progress) => {
+                if (id !== response.id) {
+                    return;
+                }
+
+                // TODO: [💢] Maybe no need to check this
+                if (response.taskName !== 'MAKE_ASSIGNMENT') {
+                    return subject.error(
+                        new UnexpectedError(`Expected taskName to be 'MAKE_ASSIGNMENT' but got ${response.taskName}`),
+                    );
+                }
+                subject.next(response);
+            });
+
+            socket.on('error', (error: SdkSocket_Error) => {
+                if (id !== error.id) {
+                    return;
+                }
+
+                subject.error(new Error(error.message));
+
+                // TODO: [🧠] Should we disconnect and close here?
+                subject.complete();
+                socket.disconnect();
+            });
         })();
 
         return {
@@ -90,11 +134,9 @@ export class WebgptSdk {
                 return subject;
             },
             asPromise() {
-                return observableToPromise(subject) as Promise<MakeAssignmentResult>; // <- TODO: Maybe check if it's really result not progress
+                return observableToPromise(subject) as Promise<MakeAssignmentResult>;
             },
         };
-
-        return promptResult;
     }
 
     /**
