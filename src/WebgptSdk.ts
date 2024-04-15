@@ -5,6 +5,7 @@ import type { Socket } from 'socket.io-client';
 import { io } from 'socket.io-client';
 // !!!! import { version } from '../package.json';
 import { IdeaNotAccepted } from './errors/IdeaNotAccepted';
+import { TimeoutError } from './errors/TimeoutError';
 import { UnexpectedError } from './errors/UnexpectedError';
 import type {
     MakeAssignmentOptions,
@@ -18,17 +19,20 @@ import type { SdkSocket_Progress } from './types/socket/SdkSocket_Progress';
 import type { SdkSocket_Request } from './types/socket/SdkSocket_Request';
 import type { SdkSocket_Response } from './types/socket/SdkSocket_Response';
 import type { TaskId } from './types/Task';
+import type { WebgptSdkOptions } from './types/WebgptSdkOptions';
 import { notUsing } from './utils/notUsing';
 import { observableToPromise } from './utils/observableToPromise';
 import { $randomUuid } from './utils/randomUuid';
 
-export type WebgptSdkOptions = {
-    token: string;
-};
-
 export class WebgptSdk {
-    constructor(private readonly options: WebgptSdkOptions) {
-        console.log('WebgptSdk constructor');
+    private options: Required<WebgptSdkOptions>;
+
+    constructor(options: WebgptSdkOptions) {
+        this.options = {
+            ...options,
+            remoteUrl: 'http://localhost:4447/',
+            path: '/sdk/socket.io',
+        };
     }
 
     /**
@@ -36,8 +40,8 @@ export class WebgptSdk {
      */
     private makeConnection(): Promise<Socket> {
         return new Promise((resolve, reject) => {
-            const socket = io('http://localhost/', {
-                path: '/sdk/socket.io',
+            const socket = io(this.options.remoteUrl, {
+                path: this.options.path,
                 transports: [/*'websocket', <- TODO: [🌬] Make websocket transport work */ 'polling'],
             });
 
@@ -46,7 +50,7 @@ export class WebgptSdk {
             });
 
             setTimeout(() => {
-                reject(new Error(`Timeout while connecting to WebGPT SDK server.`));
+                reject(new TimeoutError(`Timeout while connecting to WebGPT SDK server.`));
             }, 60000 /* <- TODO: Timeout to config */);
         });
     }
@@ -70,6 +74,7 @@ export class WebgptSdk {
 
         (async () => {
             const socket = await this.makeConnection();
+
             socket.emit('request', {
                 token: this.options.token,
                 sdkVersion: /*version*/ '!!!!',
