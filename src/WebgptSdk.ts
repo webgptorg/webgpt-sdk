@@ -4,6 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 import type { Socket } from 'socket.io-client';
 import { io } from 'socket.io-client';
 // !!!! import { version } from '../package.json';
+import spaceTrim from 'spacetrim';
 import { IdeaNotAccepted } from './errors/IdeaNotAccepted';
 import { TimeoutError } from './errors/TimeoutError';
 import { UnexpectedError } from './errors/UnexpectedError';
@@ -29,9 +30,9 @@ export class WebgptSdk {
 
     constructor(options: WebgptSdkOptions) {
         this.options = {
-            ...options,
             remoteUrl: 'https://sdk.webgpt.cz/',
             path: '/sdk/socket.io',
+            ...options,
         };
     }
 
@@ -50,8 +51,22 @@ export class WebgptSdk {
             });
 
             setTimeout(() => {
-                reject(new TimeoutError(`Timeout while connecting to WebGPT SDK server.`));
-            }, 60000 /* <- TODO: Timeout to config */);
+                reject(
+                    new TimeoutError(
+                        spaceTrim(`
+
+                    Timeout while connecting to WebGPT SDK server.
+
+                    - Please, check your internet connection and try again.
+                    - Make sure that remoteUrl is correct
+                      It is set to: ${this.options.remoteUrl}
+                      Try to look at ↑
+
+
+                `),
+                    ),
+                );
+            }, 2000 /* <- TODO: Timeout to config */);
         });
     }
 
@@ -126,7 +141,10 @@ export class WebgptSdk {
                     return;
                 }
 
-                subject.error(new Error(error.message));
+                const errorObject = new Error(error.message);
+                errorObject.name = error.errorName;
+
+                subject.error(errorObject);
 
                 // TODO: [🧠] Should we disconnect and close here?
                 subject.complete();

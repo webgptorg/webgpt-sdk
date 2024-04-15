@@ -16,7 +16,7 @@ async function playground() {
         token: 'fooo',
     });
 
-    const task = webgpt.makeAssignment({ idea: `Krokodýlí Zoo`, language: `cs` });
+    const task = webgpt.makeAssignment({ idea: `Krokodýlí Zoo`, language: `en` });
 
     task.asObservable().subscribe((progress) => {
         console.info(colors.bgBlue(progress.status), progress.message);
