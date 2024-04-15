@@ -30,7 +30,7 @@ export class WebgptSdk {
     constructor(options: WebgptSdkOptions) {
         this.options = {
             ...options,
-            remoteUrl: 'http://localhost:4447/',
+            remoteUrl: 'https://sdk.webgpt.cz/',
             path: '/sdk/socket.io',
         };
     }

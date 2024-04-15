@@ -12,8 +12,7 @@ playground();
  */
 async function playground() {
     const webgpt = new WebgptSdk({
-        remoteUrl: 'http://localhost:4447/',
-        path: '/sdk/socket.io',
+        // remoteUrl: 'http://localhost:4447/',
         token: 'fooo',
     });
 
