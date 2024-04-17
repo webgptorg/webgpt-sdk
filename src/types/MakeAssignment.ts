@@ -1,5 +1,6 @@
 import type { Language } from './Language';
-import type { Task, TaskId } from './Task';
+import type { Task } from './Task';
+import type { TaskId } from './type-aliases';
 
 export type MakeAssignmentTask = Task<MakeAssignmentResult, MakeAssignmentProgress>;
 

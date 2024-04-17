@@ -1,4 +1,4 @@
-import type { TaskId } from '../Task';
+import type { TaskId } from '../type-aliases';
 
 /**
  * Socket.io error for sending tasks (and receiving result) to remote WebGPT SDK server

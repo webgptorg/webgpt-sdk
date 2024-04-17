@@ -9,7 +9,7 @@ import type {
     MakeAssignmentTask,
 } from '../types/MakeAssignment';
 import type { MakeWebsiteOptions, MakeWebsiteTask } from '../types/MakeWebsite';
-import type { TaskId } from '../types/Task';
+import type { TaskId } from '../types/type-aliases';
 import { notUsing } from '../utils/notUsing';
 import { observableToPromise } from '../utils/observableToPromise';
 import { $randomUuid } from '../utils/randomUuid';
