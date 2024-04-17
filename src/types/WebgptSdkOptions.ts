@@ -19,5 +19,5 @@ export type WebgptSdkOptions = {
     /**
      * Token for the SDK to authenticate with the WebGPT server server
      */
-    readonly token: ApiKey;
+    readonly apiKey: ApiKey;
 };

@@ -90,7 +90,7 @@ export class WebgptSdk {
             const socket = await this.makeConnection();
 
             socket.emit('request', {
-                token: this.options.token,
+                apiKey: this.options.apiKey,
                 sdkVersion: /*version*/ '!!!!',
                 id,
                 type: 'REQUEST',

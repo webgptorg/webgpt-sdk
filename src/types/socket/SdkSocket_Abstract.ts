@@ -11,7 +11,13 @@ export type SdkSocket_Abstract = {
      */
     readonly id: TaskId;
 
+    /**
+     * The name of the task
+     */
     readonly taskName: 'MAKE_ASSIGNMENT' | 'MAKE_WEBSITE';
 
+    /**
+     * The type of the request
+     */
     readonly type: 'REQUEST' | 'PROGRESS' | 'RESPONSE' | 'ERROR';
 };
