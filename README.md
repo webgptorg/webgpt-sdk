@@ -21,7 +21,7 @@ const webgpt = new WebgptSdk({
     apiKey: 'webgpt-sample-token',
 });
 
-const { assignment } = webgpt
+const { assignment } = await webgpt
     .makeAssignment({
         idea: `Crocodile zoo`,
         language: `en`,
