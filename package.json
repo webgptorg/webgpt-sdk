@@ -1,7 +1,7 @@
 {
     "name": "@webgpt/sdk",
     "version": "0.14.1",
-    "description": "Library to supercharge your use of large language models",
+    "description": "WebGPT SDK is a TypeScript / JavaScript library for interacting with the WebGPT API.",
     "private": false,
     "sideEffects": false,
     "repository": {
