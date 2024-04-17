@@ -1,6 +1,6 @@
 {
     "name": "@webgpt/sdk",
-    "version": "0.14.1",
+    "version": "0.14.2",
     "description": "WebGPT SDK is a TypeScript / JavaScript library for interacting with the WebGPT API.",
     "private": false,
     "sideEffects": false,
