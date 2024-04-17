@@ -1,4 +1,3 @@
-// import type { TaskProgress } from '@promptbook/types'; // <- TODO: !!! Uninstall @promptbook/* if not needed
 import { countCharacters, countWords } from '@promptbook/utils';
 import { BehaviorSubject } from 'rxjs';
 import type { Socket } from 'socket.io-client';
