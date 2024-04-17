@@ -6,7 +6,7 @@ describe('how WebgptSdk works', () => {
         expect(
             () =>
                 new WebgptSdk({
-                    token: 'webgpt-sample-token',
+                    apiKey: 'webgpt-sample-token',
                 }),
         ).not.toThrow();
     });
