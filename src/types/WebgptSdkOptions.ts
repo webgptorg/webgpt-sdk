@@ -1,3 +1,5 @@
+import type { ApiKey } from './type-aliases';
+
 export type WebgptSdkOptions = {
     /**
      * URL of the remote WebGPT server
@@ -17,7 +19,5 @@ export type WebgptSdkOptions = {
     /**
      * Token for the SDK to authenticate with the WebGPT server server
      */
-    readonly token: string;
+    readonly token: ApiKey;
 };
-
-// TODO: !!!! Default remoteUrl

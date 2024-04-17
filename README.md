@@ -33,6 +33,24 @@ console.info(`Assignment:`, '\n', assignment);
 
 See more usage examples in the [/samples](./samples) directory.
 
+## Capabilities of SDK
+
+1. **Make assignment** Creates assignment from idea.
+2. **Make website** Makes website from from idea and publishes it.
+
+## Terminology
+
+-   **Idea** is short description of the website, email from client or any other input that describes the desired website.
+-   **Assignment** is precise and professional description of the website, content structure, name, domain, keywords, etc.
+-   **Website Preview** is website inside the WebGPT system in editable state, for example https://webgpt.cz/fuel-factor-x-2plub5fh5wws
+-   **Published Website** is the final product, the website live on the the domain, for example https://www.jezdimelevneji.cz/
+-   **Task** is the process of creating the assignment or website.
+    -   Every task has its unique ID
+    -   Once started, task is running independently of the SDK instance
+    -   Task can be recovered by its ID
+    -   You can list all tasks and their statuses with `.asObservable()`
+    -   Or just get the result with `.asPromise()`
+
 ## Access
 
 This is internal SDK for our partners.
