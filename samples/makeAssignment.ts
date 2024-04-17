@@ -12,7 +12,7 @@ async function makeAssignment() {
     //     >
     //     >
     //     > const webgpt = new WebgptSdk({
-    //     >     apiKey: 'YOUR_API_KEY',
+    //     >     apiKey: 'webgpt-token',
     //     > });
 
     const webgpt = new MockedWebgptSdk();

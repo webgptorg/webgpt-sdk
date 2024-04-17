@@ -18,7 +18,7 @@ Then, you can use the SDK in your code:
 import { WebgptSdk } from '@webgpt/sdk';
 
 const webgpt = new WebgptSdk({
-    apiKey: 'YOUR_API_KEY',
+    apiKey: 'webgpt-sample-token',
 });
 
 const { assignment } = webgpt

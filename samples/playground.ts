@@ -13,7 +13,7 @@ playground();
 async function playground() {
     const webgpt = new WebgptSdk({
         // remoteUrl: 'http://localhost:4447/',
-        token: 'fooo',
+        token: 'webgpt-sample-token',
     });
 
     const task = webgpt.makeAssignment({ idea: `Krokodýlí Zoo`, language: `en` });
