@@ -53,5 +53,8 @@ See more usage examples in the [/samples](./samples) directory.
 
 ## Access
 
-This is internal SDK for our partners.
+The SDK is for our partners.
+
+Token `webgpt-sample-token` works only for the sample usage. It behaves like a real token, but it does not create any real assignments or websites, just returns sample data.
+
 If you are interested in using it, please contact us at [pavol@webgpt.cz](https://www.pavolhejny.com/contact).
