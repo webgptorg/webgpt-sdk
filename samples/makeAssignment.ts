@@ -1,21 +1,14 @@
 #!/usr/bin/env ts-node
 
 import colors from 'colors';
-import { MockedWebgptSdk } from '../src/mock/MockedWebgptSdk';
+import { WebgptSdk } from '../src/WebgptSdk'; // <- Note: [💫] In production there will be import from '@webgpt/sdk';
 
 makeAssignment();
 
 async function makeAssignment() {
-    // Note: Normally you would import and use the WebgptSdk from the package:
-    //
-    //     > import { WebgptSdk } from '@webgpt/sdk';
-    //     >
-    //     >
-    //     > const webgpt = new WebgptSdk({
-    //     >     apiKey: 'webgpt-token',
-    //     > });
-
-    const webgpt = new MockedWebgptSdk();
+    const webgpt = new WebgptSdk({
+        apiKey: 'webgpt-sample-token', // <- Note: [💫] And your seacret token; ideally from environment configuration
+    });
 
     const task = webgpt.makeAssignment({ idea: `Krokodýlí Zoo`, language: `cs` });
 
