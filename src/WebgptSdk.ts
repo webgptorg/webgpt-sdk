@@ -3,7 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import type { Socket } from 'socket.io-client';
 import { io } from 'socket.io-client';
 // !!!! import { version } from '../package.json';
-import spaceTrim from 'spacetrim';
+import { spaceTrim } from 'spacetrim';
 import { IdeaNotAccepted } from './errors/IdeaNotAccepted';
 import { TimeoutError } from './errors/TimeoutError';
 import { UnexpectedError } from './errors/UnexpectedError';
