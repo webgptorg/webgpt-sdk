@@ -17,5 +17,10 @@ export default {
         },
     ],
 
-    plugins: [typescript()],
+    plugins: [
+        typescript({
+            tsconfig: './tsconfig.json',
+            //       <- Note: This is essential propper type declaration generation
+        }),
+    ],
 };
