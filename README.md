@@ -10,6 +10,7 @@
 [![test](https://github.com/webgptorg/webgpt-sdk/actions/workflows/test.yml/badge.svg)](https://github.com/webgptorg/webgpt-sdk/actions/workflows/test.yml)
 [![Known Vulnerabilities](https://snyk.io/test/github/webgptorg/webgpt-sdk/badge.svg)](https://snyk.io/test/github/webgptorg/webgpt-sdk)
 [![Issues](https://img.shields.io/github/issues/webgptorg/webgpt-sdk.svg?style=flat)](https://github.com/webgptorg/webgpt-sdk/issues)
+[![Socket](https://socket.dev/api/badge/npm/package/@webgpt/sdk)](https://socket.dev/npm/package/@webgpt/sdk)
 <!--[![NPM Version of ⏣ WebGPT SDK](https://badge.fury.io/js/webgpt-sdk.svg)](https://www.npmjs.com/package/webgpt-sdk)-->
 
 <!--/Badges-->
