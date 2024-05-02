@@ -67,5 +67,15 @@
     },
     "main": "./dist/umd/index.umd.js",
     "module": "./dist/esm/index.es.js",
-    "typings": "./dist/esm/typings/index.d.ts"
+    "typings": "./dist/esm/typings/index.d.ts",
+    "funding": [
+        {
+            "type": "individual",
+            "url": "https://buymeacoffee.com/hejny"
+        },
+        {
+            "type": "github",
+            "url": "https://github.com/webgptorg/webgpt-sdk/blob/main/README.md#%EF%B8%8F-contributing"
+        }
+    ]
 }
