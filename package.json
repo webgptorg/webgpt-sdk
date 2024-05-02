@@ -58,7 +58,7 @@
     },
     "dependencies": {
         "@promptbook/core": "^0.47.0-0",
-        "@promptbook/utils": "0.45.0",
+        "@promptbook/utils": "^0.47.0-0",
         "rxjs": "7.8.1",
         "socket.io-client": "4.7.2",
         "spacetrim": "^0.11.23",
