@@ -57,13 +57,13 @@
         "tslib": "2.3.1"
     },
     "dependencies": {
-        "@promptbook/core": "^0.48.0",
-        "@promptbook/utils": "^0.48.0",
+        "@promptbook/core": "0.48.0",
+        "@promptbook/utils": "0.48.0",
         "rxjs": "7.8.1",
         "socket.io-client": "4.7.2",
-        "spacetrim": "^0.11.24",
+        "spacetrim": "0.11.24",
         "uuid": "9.0.1",
-        "waitasecond": "^1.11.68"
+        "waitasecond": "1.11.68"
     },
     "main": "./dist/umd/index.umd.js",
     "module": "./dist/esm/index.es.js",
