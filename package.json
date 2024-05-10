@@ -57,7 +57,7 @@
         "tslib": "2.3.1"
     },
     "dependencies": {
-        "@promptbook/core": "0.48.0",
+        "@promptbook/core": "^0.49.1",
         "@promptbook/utils": "0.48.0",
         "rxjs": "7.8.1",
         "socket.io-client": "4.7.2",
