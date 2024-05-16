@@ -1,6 +1,6 @@
 {
     "name": "@webgpt/sdk",
-    "version": "0.19.0",
+    "version": "0.19.7",
     "description": "WebGPT SDK is a TypeScript / JavaScript library for interacting with the WebGPT API.",
     "private": false,
     "sideEffects": false,
@@ -60,11 +60,21 @@
         "@promptbook/utils": "0.50.0-10",
         "rxjs": "7.8.1",
         "socket.io-client": "4.7.2",
-        "spacetrim": "^0.11.14",
+        "spacetrim": "0.11.25",
         "uuid": "9.0.1",
-        "waitasecond": "1.11.59"
+        "waitasecond": "1.11.69"
     },
     "main": "./dist/umd/index.umd.js",
     "module": "./dist/esm/index.es.js",
-    "typings": "./dist/esm/typings/index.d.ts"
+    "typings": "./dist/esm/typings/index.d.ts",
+    "funding": [
+        {
+            "type": "individual",
+            "url": "https://buymeacoffee.com/hejny"
+        },
+        {
+            "type": "github",
+            "url": "https://github.com/webgptorg/webgpt-sdk/blob/main/README.md#%EF%B8%8F-contributing"
+        }
+    ]
 }
