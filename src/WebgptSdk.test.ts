@@ -1,4 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
+import { forTime } from 'waitasecond';
 import { WebgptSdk } from './WebgptSdk';
 
 describe('how WebgptSdk works', () => {
@@ -20,12 +21,22 @@ describe('how WebgptSdk works', () => {
 
             const { assignment } = await task.asPromise();
 
+            console.log(assignment);
+
             if (assignment.length === 0) {
                 throw new Error('Assignment is empty');
             }
-        }).resolves.not.toThrow());
+
+            return 'aaa';
+        }).resolves.toBe('aaa'));
+
+    it('can handle a error', () =>
+        expect(async () => {
+            await forTime(1000);
+            throw new Error('Test');
+        }).rejects.toThrowError(/Test/));
 });
 
 /**
- * TODO: Write real tests
+ * TODO: Write real and working async tests
  */
